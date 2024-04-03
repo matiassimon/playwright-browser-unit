@@ -1,0 +1,41 @@
+{
+  "name": "playwright-browser-unit",
+  "version": "0.0.1",
+  "description": "A package to run unit tests in the browser using Playwright",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matiassimon/playwright-browser-unit"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./browser": "./dist/browser/index.js",
+    "./global-setup": "./dist/global-setup.js"
+  },
+  "scripts": {
+    "build": "tsc && cp browser-unit.test.in dist/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "unit",
+    "test",
+    "browser",
+    "playwright"
+  ],
+  "files": [
+    "dist",
+    "package.json",
+    "LICENCE"
+  ],
+  "author": "Matias Simonetto",
+  "license": "ISC",
+  "dependencies": {
+    "@playwright/test": "^1.42.1",
+    "@storybook/expect": "^28.1.3-5",
+    "mustache": "^4.2.0",
+    "source-map-js": "^1.2.0"
+  },
+  "devDependencies": {
+    "@types/mustache": "^4.2.5",
+    "@types/node": "^20.12.3"
+  }
+}

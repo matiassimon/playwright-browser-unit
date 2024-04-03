@@ -1,0 +1,24 @@
+import { evaluateTest, SourceMap } from "playwright-browser-unit";
+
+import { test } from "@playwright/test";
+
+test.describe("browser tests", () => {
+
+  {{#testTitles}}
+  test("{{{.}}}", async ({ page }) => {
+    await page.goto("http://localhost:3000");
+    await evaluateTest(page, "{{{.}}}", sourceMaps);
+  });
+
+  {{/testTitles}}
+});
+
+const sourceMaps: SourceMap[] = [
+  {{#sourceMaps}}
+  {
+    url: "{{{url}}}",
+    sourceMapUrl: "{{{sourceMapUrl}}}"
+  },
+  {{/sourceMaps}}
+]
+
