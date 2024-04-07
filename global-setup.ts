@@ -82,7 +82,8 @@ async function globalSetup(config: FullConfig<PBUOptions>) {
   // view used for expanding the mustache template
   const view = {
     testTitles,
-    sourceMaps: sourceMaps,
+    sourceMaps,
+    pbuOptions,
   };
 
   // reads the template, render it, and save the test file
