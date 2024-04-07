@@ -9,7 +9,7 @@ const getTestTitles = async (page: Page) => {
   return await page.evaluate((PBU_OBJECT_KEY: string) => {
     const PBUObj = (window as any)[PBU_OBJECT_KEY];
 
-    if (!(PBUObj.constructor.name === "PBUObject")) {
+    if (!(PBUObj?.constructor.name === "PBUObject")) {
       return [];
     }
 
