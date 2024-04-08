@@ -9,7 +9,7 @@ export type SourceMap = {
 
 export type PBUOptions = {
   pbuURL: string,
-  pbuTestFile: string 
+  pbuTestFile: string
 }
 
 const parseSourceMapURL = (sourceMapURL: string) => {
@@ -27,9 +27,11 @@ const processErrorMessage = (rawMessage: string) => {
 };
 
 const processStackSource = (rawSource: string, sourcesRoot?: string) => {
+  // Remove initial "webpack://_N_E/" and url parameter at the end of the path
+  // (i.e. webpack://_N_E/app/test/page.tsx?b39b -> /app/test/page.tsx)
   let source = rawSource;
   source = source.replace("webpack://_N_E/", "");
-  const regexPattern = /(^.+?)\?(\d+)$/gi;
+  const regexPattern = /(^.+?)\?(\w+)$/gi;
   const match = regexPattern.exec(source);
   if (match !== null) {
     source = match[1];
